@@ -43,7 +43,8 @@ Metalsmith(cwd)
       'es': 'Español',
       'ko': '한국어',
       'pt-BR': 'Português do Brasil',
-      'ru': 'Русский'
+      'ru': 'Русский',
+      'zh-CN': '简体中文'
     },
     home(current) {
       const locale = current.locale || this.defaultLocale;
@@ -116,7 +117,7 @@ Metalsmith(cwd)
   })
   .use(locales({
     defaultLocale: 'en',
-    locales: ['en', 'es', 'ko', 'pt-BR', 'ru']
+    locales: ['en', 'es', 'ko', 'pt-BR', 'ru', 'zh-CN']
   }))
   .use(versions({
     versions: [
