@@ -199,9 +199,9 @@ Metalsmith(cwd)
     dest: '.'
   }))
   // finally check if we have broken links
-  .use(linkcheck({
-    failMissing: false
-  }))
+  // .use(linkcheck({
+  //   failMissing: false
+  // }))
   .use(when(!isDev, minify()))
   .use(when(!isDev, gzip()))
   .use((files, metalsmith, done) => {
