@@ -1,149 +1,147 @@
 ---
-title: Playground Tutorial
-contributors: [ikoevska, rigor789, hines-sharrod]
+title: Playground 教程
+contributors: [yinxiupei]
 ---
+[NativeScript Playground](https://play.nativescript.org?template=play-vue) 一个可以在浏览器中使用 NativeScript 以及 Vue.js 的在线工具。点击链接，拖拽工具栏的组件开始你的应用。
 
-The [NativeScript Playground](https://play.nativescript.org?template=play-vue) is a place in the cloud where you can just play around with NativeScript and Vue.js from your browser until you figure out the basics. Fire the link and start dragging and dropping component code around the place.
+你可以随心所欲的使用 Playground 开发你的应用。你可以使用它来体验 NativeScript 的开发，又或者使用它开发完整的项目。 然而，当你决定准备将使用 Playground 开发时，如果需要更多高级功能，你需要在本地 [安装 NativeScript 工具](/zh-CN/docs/getting-started/installation) 染后 [选择一个模板立即开始](/zh-CN/docs/getting-started/templates)
 
-You can work in the Playground for as long as you like. You can use it to just get a taste of NativeScript development or to develop your entire project inside. However, when you get to the point where you are ready to put your app out there, you need to jump on the more advanced wagon and [install NativeScript tools locally](/en/docs/getting-started/installation) and then [pick a template to start with](/en/docs/getting-started/templates).
-
-**This page consists of two parts:**
-* [Part 1: Getting familiar with the Playground](#part-1-getting-familiar-with-the-playground)
-    * [Before you start](#before-you-start)
-    * [The lay of the land](#the-lay-of-the-land)
-    * [Drag and drop to code](#drag-and-drop-to-code)
-    * [Check it out real-time](#check-it-out-real-time)
-    * [Configure your code](#configure-your-code)
-* [Part 2: Building an app](#part-2-building-an-app)
-    * [The bare Vue.js template](#the-bare-vuejs-template)
-    * [Basic design](#basic-design)
-    * [Basic functionality: Add tasks](#basic-functionality-add-tasks)
-    * [Basic functionality: View, complete, and delete tasks from the To Do tab](#basic-functionality-view-complete-and-delete-tasks-from-the-to-do-tab)
-    * [Basic functionality: View, return to active tasks, and delete tasks from the Completed tab](#basic-functionality-view-return-to-active-tasks-and-delete-tasks-from-the-completed-tab)
-    * [Advanced design: Styled input field and button](#advanced-design-styled-input-field-and-button)
-    * [Advanced design: Styled tab navigation](#advanced-design-styled-tab-navigation)
-    * [Advanced design: Styled active tasks](#advanced-design-styled-active-tasks)
-    * [Advanced design: Styled completed tasks](#advanced-design-styled-completed-tasks)
+**本页会介绍以下两部分内容：**
+* [第一部分: 了解 Playground](#part-1-getting-familiar-with-the-playground)
+    * [使用之前](#before-you-start)
+    * [布局](#the-lay-of-the-land)
+    * [拖放代码](#drag-and-drop-to-code)
+    * [实时检查](#check-it-out-real-time)
+    * [代码配置](#configure-your-code)
+* [第二部分: 构建一个应用](#part-2-building-an-app)
+    * [一个 Vue.js 模板](#the-bare-vuejs-template)
+    * [基础设计](#basic-design)
+    * [基础功能: 添加功能任务](#basic-functionality-add-tasks)
+    * [基础功能: 视图, 布局以及代办应用的删除功能](#basic-functionality-view-complete-and-delete-tasks-from-the-to-do-tab)
+    * [基础功能: view, return to active tasks, and delete tasks from the Completed tab](#basic-functionality-view-return-to-active-tasks-and-delete-tasks-from-the-completed-tab)
+    * [进阶功能: 自定义输入框和按钮样式](#advanced-design-styled-input-field-and-button)
+    * [进阶功能: 自定义导航栏样式](#advanced-design-styled-tab-navigation)
+    * [进阶功能: 自定义活动任务样式](#advanced-design-styled-active-tasks)
+    * [进阶功能: 自定义已完成任务样式](#advanced-design-styled-completed-tasks)
 
 
-# Part 1: Getting familiar with the Playground
+# 第一部分: 了解 Playground
+点击 [链接](https://play.nativescript.org/?template=play-vue) 呈现在你面前的一个在线代码编辑器并为你预加载了一个基础的 NativeScript + Vue.js 模板。
 
-Firing [this link](https://play.nativescript.org/?template=play-vue) gets you to a simple code editor in the cloud where a very basic NativeScript + Vue.js template is pre-loaded for you.
+> **提示:** 点击 [Playground 示例](/zh-CN/docs/getting-started/playground-tutorial) 了解如何在 Playground 中快速开始。
 
-> **TIP:** Head to [Sample Tasks for the Playground](/en/docs/getting-started/playground-tutorial) for ideas about how to get started in the Playground.
-
-### Before you start
+### 使用之前
 
 ![playground welcome screen](/screenshots/ns-playground/playground-home.png)
+如果这是你第一次进入该页面， Playground 会尝试提示你安装 NativeScript Playground 以及 NativeScript Preview 两个应用。两者结合可以让你在设备上实时查看到页面改动。不需要代码编译以及打包代码。
 
-If this is your first time here, the Playground prompts you to install a couple of mobile apps&mdash;the NativeScript Playground and the NativeScript Preview. Together they let you see your code changes applied in real time on device. No code building and bundling required.
+你可以忽略以上步骤，但是没有它，你可能会错过很多关于 Vue.js 和 NativeScript 的乐趣
 
-You can ignore this step but without it, you'll miss most of the fun and excitement of playing around with Vue.js and NativeScript.
+在修改代码时保持应用程序正常运行。
 
-Keep the apps running while you're experimenting with the code.
-
-### The lay of the land
+### 布局
 
 ![](/screenshots/ns-playground/playground-layout.png)
 
-The left sidebar offers a file explorer and a **Components** panel. Most of your effort on your app will happen in `components` > `HelloWorld.vue`, where you'll be creating the user interface and the business logic behind it. No need to deep dive in any other files for now.
+界面左侧是文件管理器与 **组件** 面板。你在应用程序上的大部分工作都将在 `components` 文件下的 `HelloWorld.vue` 中进行，之后你也会为其创建用户接口以及其背后的业务逻辑。对于其他文件暂时不需要过深入研究任何。
 
-The **Components** panel provides quick access to already pre-configured code for all available NativeScript UI components.
+**组件** 面板为用户提供了一部分预先配置的可用的 NativeScript UI 组件代码。
 
-From the top of the page, you can push changes to the preview apps on your device, save, and download your code.
+在界面的顶部导航栏中，你可以在设备上预览提交的修改、保存到云端、或是下载代码。
 
-The bottom of the page is your best friend providing real-time error reports and device logs.
+界面底部的控制台会很友好的给你提供实时错误报告与设备日志。
 
-### Drag and drop to code
+### 拖放代码
 
 ![](/screenshots/ns-playground/playground-drag-and-drop.gif)
 
-Just click a component from the **Components** panel and drag it to the code editor, somewhere inside the `<template>` block in `components` > `HelloWorld.vue`. Releasing the mouse button inserts some pre-written sample code for the respective component. Any methods that go with it (such as what happens on button or item tap) are automatically added right below in the `<script>` block. 
+只需要点击 **组件** 面板里的组件并将其拖放到编辑器上，那里立即会插入一个 `<template>` 块在 `components` 里的 `HelloWorld.vue` 中。松开鼠标，文件中会插入一段当前组件预先编辑好的代码块。与它一起使用的任何方法（例如：有关于按钮点击或是项目点击的事件）也会自动添加到 `<script>` 块中。
 
-> **TIP:** Use the search of the **Components** panel to quickly find the element that you want to use. The search works only with the title of the component and not the actual name used in the code. For example: the search finds *text field* but does not find *textfield*.
+> **提示：** 使用 **组件** 面板的搜索功能可以快速找到想要的组件。但搜索功能只能根据组件标题而不是实际代码中使用的名称进行查询。举个例子：你可以根据 *text field* 搜索目标组件但是搜索不到关于 *textfield* 的组件。
 >
 > ![](/screenshots/ns-playground/playground-component-search.gif)
 
-For most UI components to work, you need to drop them inside the `<Page>` block, preferably inside a layout component. Layouts tell your app how to position the UI components on the screen.
+对于大部分 UI 组件，你需要将该组件拖拽至 `<Page>` 代码块中，将组件置于布局组件中更佳。应用程序中 UI 组件在屏幕上的位置由你选择的布局决定。
 
-> **NOTE:** Right now, there's nothing stopping you from dropping the code at a place that will cause your app to crash or simply not load. In those cases, check the **Errors** and **Device Logs** tabs for more information.
+> **注意:** 此时, 如果你将代码置于编辑器中从而引起你的应用崩溃或是无法加载。这种情况下，可以通过界面底部 **Errors** 栏以及 **Device Logs** 栏获取一些信息。
 
-### Check it out real-time
+### 实时检查
 
 ![](/screenshots/ns-playground/playground-preview.gif)
 
-After you place the code in a valid spot, hit **Preview** (or `Ctrl+S` or `Cmd+S`) and see your app refresh on your device screen in an instant. 
+在你觉得当前代码为有效代码时，可以点击 **Preview** （或 `Ctrl+S` 或是 `Cmd+S`）进行预览，此时在设备上可以立即查看应用刷新情况。
 
-In some cases, when you interact with the app, it will close unexpectedly. Just fire it up again and inspect the crash report. 
+当你在设备上进行测试时，应用有可能会出现意外终止被关闭的情况。这时你只需要重新启动然后仔细查看崩溃报告。
 
-If at any point you stop seeing your changes applied on the device, click **QR code** and re-scan the QR code with the *Playground* app.
+如果你发现你的设备在有代码更改的情况却没有任何反应，点开 **QR code**，然后使用 *Playground* 应用重新扫描二维码即可。
 
-### Configure your code
+### 代码配置
 
-So, the component runs and shows on your screen. You're excited but you want to make it your own. Hack away at the default code suggested by the Playground. Fix sizes and labels, remove or add elements.
+所以，当组件运行并且展示在你的眼前时，你会觉得很有意思并且想把当前应用占为己有。这时候需要处理一些 Playground 提供的默认代码，修改布局尺寸以及标签，删除或是增加一些新的元素。
 
-Scroll down to the `<style scoped>` block and switch up the styling a bit. Experiment with colors and font sizes. 
+将滚动条滚动至 `<style scoped>` 块中，可以对样式进行修改。你可以根据自己习惯配置颜色和字体大小。
 
-# Part 2: Building an app
+# 第二部分: 构建一个应用
 
-If you want to explore the [NativeScript Playground](https://play.nativescript.org?template=play-vue), you can start by creating a simple to-do app with the following requirements:
+如果你想探索 [NativeScript Playground](https://play.nativescript.org?template=play-vue)更多功能，你可以从创建一个简单待办应用程序开始，需求如下：
 
-* Basic design
-  * Two-tab layout
-  * One tab shows active tasks and lets you add new tasks
-  * Second tab lists completed tasks
-* Basic functionality
-  * Add tasks: Users can add tasks as text
-  * View tasks: Newly added tasks are listed as active and can be tapped
-  * Complete tasks: Tapping an active task shows an action dialog with options
-  * Delete tasks: Tapping an active or completed task shows an action dialog with options
-* Advanced design
-  * Input and button for adding tasks are styled
-  * Tabs are styled
-  * Active tasks are styled
-  * Completed tasks are styled
+* 基础设计
+  * 两栏式布局
+  * 一栏展示当前待办任务以及添加新的待办任务功能
+  * 第二栏为完成任务列表
+* 基础功能
+  * 添加待办：用户添加文本任务
+  * 查看详情：最新添加的任务被列为活动任务并且可以被点击
+  * 完成任务：点击活动任务显示一个带有选项的操作对话框
+  * 删除任务：点击一个活动任务或者已完成的任务显示一个带有选项的操作对话框
+* 进阶功能
+  * 自定义输入框和按钮样式
+  * 自定义导航栏样式
+  * 自定义活动任务样式
+  * 已完成任务是自定义的样式
 
-> **TIP:** All sections of this tutorial contain a *Some NativeScript basics* and *Requirement implementation* sub-sections. You can skip the basics sub-section and jump straight to the implementation for a more hands-on approach.
+> **提示:** 以上的所有教程包含一些 *NativeScript* 以及 *Requirement* 基础部分。你可以跳过这些基础教程直接了解自定义方法的实现。
 
-## The bare Vue.js template
+## 一个 Vue.js 模板
 
 ![](/screenshots/ns-playground/playground-home.png)
 
-All development for this tutorial happens in `components` > `HelloWorld.vue`, containing the front end, the code-behind logic, and most of the styles.
+围绕本教程的所有开发都是在 `components` 中的 `HelloWorld.vue` 文件中，包括前端，后端逻辑以及几乎所有的样式内容。
 
-`HelloWorld.vue` begins with a simple `<template>` block consisting of several labels and no connected code-behind logic. As you drag and drop user interface components to the app, the Playground populates the `<script>` block.
+`HelloWorld.vue` 最开始只有一个内容只有几个标签的 `<template>` 块。当你拖拽用户界面组件到改文件时， Playground 会将相应的方法添加至 `<script>` 块中。
 
-You'll be working in the `<template>` block to design the user interface or in the `<script>` block to build the app functionality. The `<template>` block requires NativeScript-compatible XML. The `<script>` block accepts both Vue.js and NativeScript JavaScript code.
+你可以在 `<template>` 块中设计用户界面、可以在 `<script>` 块中构建应用的逻辑功能。 `<template>` 块中要求必须时兼容 NativeScript 的XML。而 `<script>` 块可以接受 Vue.js 以及 NativeScript JavaScript 的任何代码。
 
-## Basic design
+## 基础设计
 
-### Section progress
+### 分段进行
 
+在本节中将介绍应用功能开始和最终的实现。
 Here's how your app will look at the start and at the end of this section.
 
-| Initial screen | Tab 1 | Tab 2 |
+| 界面初始化 | 第一栏 | 第二栏 |
 |-------|-----|-----|
-| ![Bare Vue.js template](/screenshots/ns-playground/two-tabs-start.jpg) | ![First tab](/screenshots/ns-playground/two-tabs-tab-1.jpg) | ![Second tab](/screenshots/ns-playground/two-tabs-tab-2.jpg) |
+| ![Vue.js 模板](/screenshots/ns-playground/two-tabs-start.jpg) | ![第一栏](/screenshots/ns-playground/two-tabs-tab-1.jpg) | ![第二栏](/screenshots/ns-playground/two-tabs-tab-2.jpg) |
 
-### Some NativeScript basics
+### NativeScript 基础
 
-The `<Page>` element is the top-level user interface element of every NativeScript-Vue app. All other user interface elements are nested within.
+`<Page>` 是每一个 NativeScript-Vue 应用程序的最外层的 UI 元素。所有的其他 UI 元素都要嵌套在 `<Page>` 元素里。
 
-The `<ActionBar>` element shows an action bar for the `<Page>`. A `<Page>` cannot contain more than one `<ActionBar>`.
+`<ActionBar>` 元素可为 `<Page>` 提供一个工具栏，一个 `<Page>` 里有且仅可包含一个 `<ActionBar>`。
 
-Typically, after the `<ActionBar>`, you will have navigation components (such as a drawer or a tab view) or layout components. These elements control the layout of your app and let you determine how to place other user interface elements inside.
+通常，在`<ActionBar>` 组件之后，你需要添加一个导航组件（例如：抽屉式或栏式视图）或是布局组件。这些组件控制应用程序的基本布局，你只需要决定如何放置其它 UI 元素
 
-### Requirement implementation
+### 需求实现
 
-Use the `<TabView>` component to create a two-tab app. 
+使用 `<TabView>` 创建一个两栏式应用程序。
 
-1. Change the title of the `<ActionBar>` to reflect the app purpose.
-1. Remove the default `<ScrollView>` block and all its contents that come with the template.<br/>`<ScrollView>` components are top-level layout containers for scrollable content.
-1. Drag and drop the `<TabView>` component in its place.<br/>The Playground applies some code formatting, including taking care of indentation. However, the formatting is applied after the insertion and using the browser's undo feature only reverts the formatting and not the insertion of code.
-1. Configure the height of the `<TabView>` to fill the screen (set it to 100%).
-1. Change the titles of the `<TabViewItem>` elements and their contents to reflect their purpose.<br/>At this point, text content for the tabs is shown in `<Label>` components with no styling and formatting. Apply the `textWrap="true"` property to the respective `<Label>` components to improve the visualization of the text.
+1. 根据应用需求修改 `<ActionBar>` 组件的标题属性。
+2. 移除 `<ScrollView>` 组件块以及模板里所有内容。<br/>`<ScrollView>` 组件是滚动内容的最外层布局。
+3. 将 `<TabView>` 组件拖放至内容里。<br/> Playground 会提供代码的格式化功能，包括代码缩进。但是，代码格式化功能只在代码插入之后，浏览器的撤消功能仅能恢复格式化而不是插入的代码。
+4. 将 `<TabView>` 的高度设置满屏（即设置为 100%）
+5. 根据当前内容修改 `<TabViewItem>` 组将的标题属性。<br/>此时，你会看到在 `<Label>` 组件里显示的是没有样式和格式化的文本内容，为每个 `<Label>` 组件设置各自的 `textWrap="true"` 属性可改进文本的可视化。
 
-At the end of this stage, your `<HelloWorld.vue>` should resemble this sample:
+以上操作全部完成，那么你的 `<HelloWorld.vue>` 内容与如下内容大致类似：
 
 ```HTML
 <template>
@@ -185,60 +183,60 @@ export default {
 </style>
 ```
 
-## Basic functionality: Add tasks
+## 基本功能：添加任务
 
-### Section progress
+### 分段进行
 
-Here's how your app will look at the start and at the end of this section.
+在本节中将介绍应用功能开始和最终的实现。
 
-| Initial screen | Tab 1 - No tasks | Tab 1 - Added tasks |
+| 初始化界面 | Tab 1 - 无任务 | Tab 1 - 添加任务 |
 |-------|-----|-------------|
-| ![First tab before changes](/screenshots/ns-playground/two-tabs-tab-1.jpg) | ![First tab without any tasks](/screenshots/ns-playground/input-field.jpg) | ![First tab with added tasks](/screenshots/ns-playground/added-tasks.jpg)
+| ![修改前的 Tab](/screenshots/ns-playground/two-tabs-tab-1.jpg) | ![无任务的 Tab](/screenshots/ns-playground/input-field.jpg) | ![添加任务的 Tab](/screenshots/ns-playground/added-tasks.jpg)
 
-### Some NativeScript basics
+### NativeScript 部分
 
-The layout components let you arrange the various UI widgets of your app. Whenever you need to place more than one UI widget on your app screen, you are likely to use one of the available layout options. The `<StackLayout>` and the `<GridLayout>` are basic but versatile options, letting you position elements vertically or in a table-like layout, respectively. While the 
-`<StackLayout>` displays elements in their natural sequence, the `<GridLayout>` lets you choose the exact positions of your elements in the grid.
+布局组件主要用于整理应用程序的各种 UI 组件。当你想要在当前页面添加其他的 UI 组件，可以选择一个可用的布局选项。`<StackLayout>` 以及 `<GridLayout>` 是最基础以及通用的布局选项。它能让你的元素居中定位或是类表格式布局。当 `<StackLayout>` 组件按默认状态显示元素，`<GridLayout>` 组件会让你在格子中选择一个准确的定位。
 
-### Requirement implementation
+### 需求实现
 
+使用 `<GridLayout>` 将页面分成一个 `<TextField>` 和一个 `<Button>`，后两者构成应用程序的输入功能。
 Use a `<GridLayout>` to arrange a `<TextField>` and a `<Button>` on the page. The latter two form the input functionality of the app.
 
-Use a `<ListView>` to show tasks below the input field.
+在文本输入区域的下方使用 `<ListView>` 组件展示任务列表。
 
-1. Delete the `<Label>` component from the first `<TabViewItem>` block for the first tab.
-1. Drag and drop a `<StackLayout>` component within the `<TabViewItem>` block for the first tab.<br/>The default code creates a colorful vertical stack.
-1. Delete all `<Label>` components from the `<StackLayout>` block.
-1. Drag and drop a `<GridLayout>` component within the `<StackLayout>` block for the first tab.<br/>The default code creates a colorful table that shows how to position elements and merge grid cells.
-1. Delete all `<Label>` components from the `<GridLayout>` block.
-1. Configure the `<StackLayout>`.
-    * Remove background color.
-    * Set width and height.
-1. Configure the `<GridLayout>`.
-    * Set the grid to consist of two columns and one row.
-    * Set the width of the grid to 100% so that it takes the entire width of the screen.
-    * Set the height of the grid to 25%. Otherwise, the `<ListView>` you'll be adding later might overlap the `<GridLayout>`.
-    * Remove any additional settings for the grid.
-1. Drag and drop a `<TextField>` and a `<Button>` within the `<GridLayout>` block.<br/>The Playground adds JavaScript code to your code for the first time. Note the `data()` and `methods` blocks added in the `<script>` block below. In next implementation steps, you will need to add code to these sections to create some of the app functionality.
-1. Drag and drop a `<ListView>` below the grid.<br/>The default code creates a list of countries and country flag icons within a `<FlexboxLayout>`.
-1. Configure the positioning of the elements within the grid.
-    * Set the `<TextField>` to inhabit the first column and the first row.
-    * Set the `<Button>` to inhabit the second column and the first row.
-1. Configure the `<TextField>`.
-    * Make the text field editable.
-    * Enable adding tasks using `Return` from the keyboard.
-1. Clean up and configure the `<ListView>`.
-    * Remove all its nested blocks except for the `<Label>`.
-    * Set its height to 75%. Otherwise, the `<ListView>` might overlap the `<GridLayout>`.
-    * Replace the `countries`-related binding with a binding to your array of active tasks.
-    * In the `<script>` block, remove the array of countries and create an empty array for your active tasks.
-1. In the `<scripts>` block, tie some logic to the tapping of the button.
-    * Log newly added tasks in the console.
-    * Add newly added tasks into the array of active tasks. Use `unshift` to place new items at the top of the page.
-    * Clear the text field after input.
-1. Use the `<Label>` in the `<ListView>` to list the newly added task on the screen.
+1. 在第一栏的第一个 `<TabViewItem>` 块中删除 `<Label>` 组件。
+2. 在第一栏中拖放一个没有 `<TabViewItem>` 块的 `<StackLayout>`组件。<br/> 组件的默认代码创建的是一个彩色的垂直堆栈。
+3. 删除 `<StackLayout>` 块的所有 `<Label>` 组件。
+4. 然后在第一栏里拖放一个没有 `<StackLayout>` 块的 `<GridLayout>` 组件。<br/> 组件的默认代码创建的是一个彩色的显示元素定位以及合并网格单元的格的表格。
+5. 删除 `<GridLayout>` 块的所有 `<Label>` 组件。
+6. 配置 `<StackLayout>`：
+    * 删除背景颜色
+    * 设置长框
+7. 配置 `<GridLayout>`：
+    * 将网格设置为两列和一行.
+    * 将单元格的宽度为 100% 占满整屏的宽度。
+    * 将单元格的高度设置为 25%。另外，稍后要添加的 `<ListView>` 可能与 `<GridLayout>` 重叠。
+    * 删除单元格的额外的设置。
+8. 拖放一个 `<TextField>` 组件和一个 `<Button>` 组件。<br/> Playground 第一次将 JavaScript 代码添加到代码中。在 `<script>` 块内增加 `data()` 和 `methods` 两部份内容。在下一步的操作中，你需要为实现应用程序的功能添加新的代码。
+9. 在单元格内拖放一个 `<ListView>` 组件。<br/> 组件的默认代码会创建一个使用 `<FlexboxLayout>` 组件放置国旗图标的国家列表。
+10. 配置单元格里元素的位置：
+    * 将 `<TextField>` 放置于第一列第一行。
+    * 将 `<Button>` 放置于第二列第一行
+11. 配置 `<TextField>`：
+    * 将 editable 属性设置为可编辑。
+    * 可用 `Return` 键添加任务。
+12. 处理以及配置 `<ListView>`：
+    * 移除组件里除 `<Label>` 组件外的所有嵌套的块。
+    * 将其高度设置为 75%。另外 `<ListView>` 可能会与 `<GridLayout>` 重叠。
+    * 将绑定与国家有关的数组替换为绑定你的活动任务数组。
+    * 在 `<script>` 块中，删除 countries 数组，然后创建一个关于活动任务的空数组。
+13. `<scripts>` 块中有关按钮逻辑的开发：
+    * 在控制台中记录新添加的任务。
+    * 将最新添加的任务添加到活动任务数组中， 使用 `unshift` 将新添加的任务放置在数组的第一个。 
+    * 输入完成后清除文本框内容。
+14. 使用 `<ListView>` 中的 `<Label>` 列出屏幕上新添加的任务。
 
-At the end of this stage, your `<HelloWorld.vue>` should resemble this sample:
+以上操作全部完成，那么你的 `<HelloWorld.vue>` 内容与如下内容大致类似：
 
 ```HTML
 <template>
@@ -309,26 +307,26 @@ export default {
 </style>
 ```
 
-## Basic functionality: View, complete, and delete tasks from the To Do tab
+## 基本功能：选项卡中查看、完成和删除任务
 
-### Section progress
+### 分段进行
 
-Here's how your app will look at the start and at the end of this section.
+在本节中将介绍应用功能开始和最终的实现。
 
-| Tab 1 - Added tasks | Tab 1 - Item tapped | Tab 2 - Completed tasks
+| 第一栏 - 添加任务 | 第一栏 - 已添加的任务 | 第二栏 - 完成的任务
 |-----|-------------|-------|
 | ![First tab with added tasks](/screenshots/ns-playground/added-tasks.jpg) | ![Action dialog toggled](/screenshots/ns-playground/active-task-dialog.jpg) | ![Second tab with completed tasks](/screenshots/ns-playground/completed-tasks.jpg) |
 
-### Some NativeScript basics
+### NativeScript部分
 
-Out-of-the-box, the `<ListView>` component detects a tap gesture for every item and emits an event for it. The event carries information about the index of the tapped array item and the array item itself. To let the user choose the outcome of a tap gesture and expand the functionality of your app, you can tie a dialog to the event.
+`<ListView>` 组件可以检测到每个子项的点击手势，并为抛出其一个事件。当前事件带有关于当前点击的数组的索引以及当前数组本身的信息。你可以绑定一个弹框事件，为其配置点击事件结果以及扩展应用程序的功能。
 
-[`dialogs`](https://docs.nativescript.org/api-reference/modules/_ui_dialogs_) is a globablly available module that provides several configurable dialog types for apps: alert, action, prompt, login, confirmation. This implementation relies on [`action()`](/en/docs/elements/dialogs/action) to let the user choose if they want to mark a task as completed or delete it from the list of active tasks.
+[`dialogs`](https://docs.nativescript.org/api-reference/modules/_ui_dialogs_) 是一个全局的可用模块，为应用程序提供多个可配置的弹框类型，例如： 警告、操作、提示、登录、确认。当前需求实现依赖于 [`action()`](/en/docs/elements/dialogs/action) 弹框让用户选择标记完成任务或是从当前的活动任务删除某一项内容。
 
-### Requirement implementation
+### 需求实现
 
-1. In the second `<TabViewItem>` block, remove the `<Label>` element. Drag and drop a `<ListView>` element, clean up its contents and set a height for it.
-1. In the newly added `<ListView>` element show items from an array of completed tasks (`dones`).
+1. 在第二个 `<TabViewItem>` 块，删除 `<Label>` 元素。拖放一个 `<ListView>` 元素，处理其内容并为其设置高度。
+2. 在新添加的 `<ListView>` 元素中展示任务数组中已完成的任务 (即：`dones`) 的内容。
 
   ```HTML
   <ListView class="list-group" for="done in dones" @itemTap="onDoneTap" style="height:75%">
@@ -337,10 +335,10 @@ Out-of-the-box, the `<ListView>` component detects a tap gesture for every item 
     </v-template>
   </ListView>
   ```
-1. Modify the `onItemTap` method.
-  * Method shows an `action()` dialog.
-  * Method logs user selection in the console for debugging.
-  * Based on user selection, the method moves elements from the `todos` array to the `dones` array, deletes elements from the `todos` array, or dismisses the dialog. Use `splice()` to avoid leaving holes in the array and `unshift()` to make sure that recently completed tasks are shown on top.
+1. 修改 `onItemTap` 事件：
+  * 显示一个 `action()`弹框。
+  * 在控制台中记录用户选择的内容以进行调试。
+  * 基于用户的选择，此方法将 `todos` 数组的元素移到 `dones` 数组中，然后删除 `todos` 数组中的元素或是关闭弹框。使用 `splice()` 方法避免出现空数组、使用 `unshift()` 方法确保最近完成的任务显示在最前面。
 
   ```JavaScript
   onItemTap: function(args) {
@@ -362,7 +360,7 @@ Out-of-the-box, the `<ListView>` component detects a tap gesture for every item 
   },
   ```
 
-At the end of this stage, your `<HelloWorld.vue>` should resemble this sample:
+以上操作全部完成，那么你的 `<HelloWorld.vue>` 内容与如下内容大致类似：
 
 ```HTML
 <template>
@@ -451,27 +449,27 @@ export default {
 </style>
 ```
 
-## Basic functionality: View, return to active tasks, and delete tasks from the Completed tab
+## 基本功能： 返回活动任务，并从“已完成”选项卡中删除任务
 
-### Section progress
+### 分段进行
 
-Here's how your app will look at the start and at the end of this section.
+在本节中将介绍应用功能开始和最终的实现。
 
-| Tab 2 - Completed tasks | Tab 2 - Item tapped | Tab 1 - Active tasks
+| 第二栏 - 已完成的任务 | 第二栏 - 已添加的任务 | 第一栏 - 活动任务
 |-----|-------------|-----|
 | ![Second tab with completed tasks](/screenshots/ns-playground/completed-tasks-2.jpg) | ![Action dialog toggled](/screenshots/ns-playground/completed-tasks-dialog.jpg) | ![First tab with active tasks](/screenshots/ns-playground/completed-tasks-moved-to-active.jpg)
 
-### Some NativeScript basics
+### NativeScript 部分
 
-This implementation step does not require any additional knowledge.
+当前实现步骤不需要任何额外的知识。
 
-### Requirement implementation
+### 需求实现
 
-For the second tab, create and modify the `onDoneTap` method:
+创建和修改第二栏的 `onDoneTap` 方法：
 
-* Method shows an `action()` dialog.
-* Method logs user selection in the console for debugging.
-* Based on user selection, the method moves elements from the `dones` array to the `todos` array, deletes elements from the `dones` array, or dismisses the dialog. Use `splice()` to avoid leaving holes in the array and `unshift()` to make sure that recently completed tasks are shown on top.
+* 显示一个 `action()` 弹框。
+* 在控制台中记录用户选择的内容以进行调试。
+* 基于用户的选择，此方法将 `todos` 数组的元素移到 `dones` 数组中，然后删除 `todos` 数组中的元素或是关闭弹框。使用 `splice()` 方法避免出现空数组、使用 `unshift()` 方法确保最近完成的任务显示在最前面。
 
   ```JavaScript
   onDoneTap: function(args) { 
@@ -493,7 +491,7 @@ For the second tab, create and modify the `onDoneTap` method:
   },
   ```
 
-At the end of this stage, your `<HelloWorld.vue>` should resemble this sample:
+以上操作全部完成，那么你的 `<HelloWorld.vue>` 内容与如下内容大致类似：
 
 ```HTML
 <template>
@@ -600,29 +598,29 @@ export default {
 </style>
 ```
 
-## Advanced design: Styled input field and button
+## 进阶功能: 自定义输入框和按钮样式
 
-### Section progress
+### 分段进行
 
-Here's how your app will look at the start and at the end of this section.
+在本节中将介绍应用功能开始和最终的实现。
 
 | Tab 1 - No style | Tab 1 - Styled | Tab 1 - Styled |
 |-----|-------------|----|
 | ![Unstyled input](/screenshots/ns-playground/input-field.jpg) | ![Styled button](/screenshots/ns-playground/styled-button.jpg) | ![Styled input](/screenshots/ns-playground/styled-input.jpg) |
 
-### Some NativeScript basics
+### NativeScript 部分
 
-When you work with NativeScript and Vue.js, you can use application-wide CSS, scoped CSS, or inline CSS to style your app. Application-wide CSS is applied first and is handled in `app.css` in the root of your project. This tutorial does not explore application-wide CSS. See also: [Styling](https://docs.nativescript.org/ui/styling).
+当你使用 NativeScript 以及 Vue.js 开发应用时，你可以在应用程序中使用应用程序范围的 CSS、局部 CSS、行内 CSS。Application-wide CSS 是最先引入的，由项目的根路径的 `app.css` 控制的。具体的教程可以查看 [Styling](https://docs.nativescript.org/ui/styling)。
 
-Scoped CSS is applied to the current component only and is handled in `HelloWorld.vue` in the `<style scoped>` block. This tutorial relies almost exclusively on scoped CSS and inline CSS. See also: [Scoped CSS](https://vue-loader.vuejs.org/guide/scoped-css.html).
+局部 CSS只作用于当前的组件，仅由 `HelloWorld.vue` 内的 `<style scoped>` 块控制。当前教程只是就局部样式和行内样式说明，详情查看 [Scoped CSS](https://vue-loader.vuejs.org/guide/scoped-css.html)。
 
-With type selectors, you can select a UI component and apply styling to it. To select a type, use the component name as provided in the code. For example, to select the tab view, use `TabView`.
+带类型的选择器，你可以选择一个 UI 组件并将样式应用于在当前选择器。选择一种类型，可以使用代码中提供的组件名称。举个例子，若需要选择一个 Tab 视图，可以使用 `TabView`。
 
-### Requirement implementation
+### 需求实现
 
-#### Style the input field
+#### 文本输入框样式
 
-In `HelloWorld.vue` > `<style scoped>`, change the font size, the color, and the margins around the `<TextField>`.
+在 `HelloWorld.vue` 下的 `<style scoped>`，改变文字大小、颜色、以及 `<TextField>` 周围的边距。
 
 ```CSS
 TextField {
@@ -635,9 +633,9 @@ TextField {
 }
 ```
 
-#### Style the button
+#### 按钮样式
 
-In the `<style scoped>` block, create a style for the button. Modify the style to create a colorful button with rounded corners.
+在 `<style scoped>` 块中，为按钮创建一个样式。设置按钮的背景颜色和圆角。
 
   ```CSS
   Button { 
@@ -654,33 +652,33 @@ In the `<style scoped>` block, create a style for the button. Modify the style t
   }
   ```
   
-## Advanced design: Styled tab navigation
+## 进阶功能: 自定义导航栏样式
 
-### Section progress
+### 分段进行
 
-Here's how your app will look at the start and at the end of this section.
+在本节中将介绍应用功能开始和最终的实现。
 
 | Tabs - No style | Tabs Styled 
 |-----|-------------|
 | ![Unstyled tabs](/screenshots/ns-playground/styled-button.jpg) | ![Styled tabs](/screenshots/ns-playground/styled-tabs.jpg) |
 
-### Some NativeScript basics
+### NativeScript 部分
 
-`<TabView>` provides some styling properties out of the box. You can apply a text transform to each tab title (`textTransform`) and change the font size and color globally (`tabTextFontSize`, `tabTextColor`, `selectedTabTextColor`). You can also change the background color of your tabs (`tabBackgroundColor`).
+`<TabView>` 组件提供一些现成的样式属性。你可以通过 `textTransform` 属性修改选项栏的标题、通过 `tabTextFontSize`、 `tabTextColor`、 `selectedTabTextColor` 修改全局的字体大小和颜色，通过 `tabBackgroundColor` 修改选项卡背景颜色。
 
-### Requirement implementation
+### 需求实现
 
-#### Change color and font size of selected tab title
+#### 修改选中选项卡的字体颜色和大小。
 
-In `HelloWorld.vue`, add the `selectedTabTextColor` and `tabTextFontSize` property to the `<TabView>`.
+在 `HelloWorld.vue` 组件中，为 `<TabView>` 添加 `selectedTabTextColor` 以及 `tabTextFontSize` 属性。
 
 ```HTML
 <TabView height="100%" selectedTabTextColor="#53ba82" tabTextFontSize="15" >
 ```
 
-#### Transform text
+#### 修改文本内容
 
-Apply the `textTransform` property to the separate tabs. You can use this property only on the `<TabViewItem>` level.
+`textTransform` 属性仅能应用于 `<TabViewItem>` 选项卡中。
 
 ```HTML
 <TabViewItem title="To Do" textTransform="uppercase" >
@@ -690,33 +688,33 @@ Apply the `textTransform` property to the separate tabs. You can use this proper
 <TabViewItem title="Completed" textTransform="uppercase">
 ```
 
-## Advanced design: Styled active tasks
+## 进阶功能: 自定义活动任务样式
 
-Here's how your app will look at the start and at the end of this section.
+在本节中将介绍应用功能开始和最终的实现。
 
 | Active tasks - No style | Active tasks - no separator | Active tasks - styled active tasks |
 |-----|-------------|---|
 | ![Unstyled active tasks](/screenshots/ns-playground/styled-tabs.jpg) | ![No separator](/screenshots/ns-playground/styled-list-view-no-separator.jpg) | ![Styled list](/screenshots/ns-playground/styled-list-view-added-tasks.jpg) |
 
-### Some NativeScript basics
+### NativeScript 部分
 
-`<ListView>` and `<Label>` have out-of-the-box style properties that you can use to control elements such as the list separator or the text wrap within the `<template>` block. To change the font style, color, and positioning of text, you need to use CSS in the `<style scoped>` block.
+`<ListView>` 和 `<Label>` 有一些自带的样式属性，你可以在 `<template>` 块中用这些属性控制元素的列表分隔或是文本换行。另外需要在 `<style scoped>` 块中设置 CSS 改变字体样式、颜色、以及文本定位。
 
-To implement a style particularly for the text of active tasks, you can set an `id` for the `<Label>` element.
+想要实现活动任务有特别的样式，可以为 `<Label>` 元素设置 `id` 属性。
 
-### Requirement implementation
+### 需求实现
 
-1. Set an `id` for the `<Label>` that represents active tasks and enable text wrapping. Enabling text wrapping ensures that longer text shows properly in your list
+1. 为 `<Label>` 设置 `id` 属性表示活动任务以及文本换行。设置文本换行可以保证过长的文本也能够恰当的显示在列表中。
 
   ```HTML
   <Label id="active-task" :text="todo.name" class="list-group-item-heading" />
   ```
-1. Add the `separatorColor` property and set it to `transparent` for the `<ListView>` that shows active tasks. This way, the separator will no longer appear in your list.
+2. 为 `<ListView>` 设置 `separatorColor` 属性为 `transparent` 显示活动任务。通过这种方式可以让分隔符将不再出现在列表中。
 
   ```HTML
   <ListView class="list-group" for="todo in todos" @itemTap="onItemTap" style="height:75%" separatorColor="transparent" >
   ```
-1. In `<style scoped>`, create the style for active tasks. Set font size, color, and some padding to position the text on the page. Play with margins and paddings until you get a result that works for you.
+3. 在 `<style scoped>` 块中为活动任务创建一个样式，设置字体大小、颜色以及填充尺寸。调整边距和填充直至得到一个满意的结果。
 
   ```CSS
   #active-task {
@@ -729,32 +727,34 @@ To implement a style particularly for the text of active tasks, you can set an `
   }
   ```
 
-## Advanced design: Styled completed tasks
+## 进阶功能: 自定义已完成任务样式
 
-Here's how your app will look at the start and at the end of this section.
+在本节中将介绍应用功能开始和最终的实现。
 
 | Completed tasks - No style | Completed tasks - Styled | 
 |-----|-------------|
 | ![Unstyled completed tasks](/screenshots/ns-playground/completed-tasks-unstyled.jpg) | ![Styled completed tasks](/screenshots/ns-playground/completed-tasks-styled.jpg) |
 
-### Some NativeScript basics
+### NativeScript 部分
 
-This section applies the basic NativeScript knowledge from [Advanced design: Styled active tasks](#advanced-design-styled-active-tasks).
+本节应用一些 NativeScript 的知识主要来自 [进阶功能: 自定义活动任务样式](#advanced-design-styled-active-tasks)。
 
-### Requirement implementation
+### 需求实现
 
 1. Set an `id` for the `<Label>` that represents completed tasks and enable text wrapping. Enabling text wrapping ensures that longer text shows properly in your list
+
+1. 为 `<Label>` 设置 `id` 属性表示已完成的任务以及文本换行。设置文本换行可以保证过长的文本也能够恰当的显示在列表中。
 
   ```HTML
   <Label id="completed-task" :text="done.name" class="list-group-item-heading" />
   ```
-1. Add the `separatorColor` property, and set it to `transparent` for the `<ListView>` that represents completed tasks. This way, the separator will no longer appear in your list.
+2. 为 `<ListView>` 设置 `separatorColor` 属性为 `transparent` 显示已完成的任务。通过这种方式可以让分隔符将不再出现在列表中。
 
   ```HTML
   <ListView id="completed-list" class="list-group" for="done in dones" @itemTap="onDoneTap" style="height:75%" separatorColor="transparent">
   ```
 
-1. In `<style scoped>`, create the style for completed tasks. Set font size, color, text decoration, and some padding to position the text on the page. Play with margins and paddings until you get a result that works for you.
+3. 在 `<style scoped>` 块中为已完成的任务创建一个样式，设置字体大小、颜色以及填充尺寸。调整边距和填充直至得到一个满意的结果。
 
   ```CSS
   #completed-task {
